@@ -5,10 +5,10 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g
 
 # Arquivo de saída
-TARGET = selection_sort
+TARGET = main
 
 # Lista de arquivos de origem
-SRCS = Ex01.c
+SRCS = main.c
 
 # Gera uma lista de arquivos objeto
 OBJS = $(SRCS:.c=.o)
