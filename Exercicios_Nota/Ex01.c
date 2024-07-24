@@ -30,7 +30,7 @@ int main(){
 
 
     int n = 10;
-    int vetor[10] = {2, 2, 3, 3, 6, 51, 9, 8 , 9, 8};
+    int vetor[10] = {2, 2, 3, 3, 6, 510, 9, 8 , 900, 8};
 
     Selection_Sort(vetor, n);
 
