@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 // Função de ordenação por seleção
 void Selection_Sort(int vet[], int n)
@@ -23,6 +24,23 @@ void Selection_Sort(int vet[], int n)
             vet[min] = vet[i];
             vet[i] = aux;
         }
+    }
+}
+
+// Função de ordenação por inserção
+void Insertion_Sort(int vet[], int n)
+{
+    for (int i = 1; i < n; i++)
+    {
+        int key = vet[i];
+        int j = i - 1;
+
+        while (j >= 0 && vet[j] > key)
+        {
+            vet[j + 1] = vet[j];
+            j = j - 1;
+        }
+        vet[j + 1] = key;
     }
 }
 
@@ -96,12 +114,49 @@ int main(int argc, char *argv[])
     int size;
     int *numbers = readNumbersFromFile(argv[1], &size);
 
+    // printf("Vetor antes da ordenação:\n");
+    // printArray(numbers, size);
 
-    Selection_Sort(numbers, size);
+    // Medir o tempo de execucao do Selection_Sort
+    int *copy1 = (int*)malloc(size * sizeof(int));
+    if (copy1 == NULL)
+    {
+        fprintf(stderr, "Erro ao alocar memória\n");
+        return 1;
+    }
+    for (int i = 0; i < size; i++) copy1[i] = numbers[i];
 
-    printf("Vetor ordenado por selection sort:\n");
-    printArray(numbers, size);
+    clock_t start = clock();
+    Selection_Sort(copy1, size);
+    clock_t end = clock();
+    double time_spent = (double)(end - start) / CLOCKS_PER_SEC;
 
+    // printf("Vetor após Selection Sort:\n");
+    // printArray(copy1, size);
+
+    printf("Tempo de execucao do Selection Sort: %f segundos\n", time_spent);
+
+    free(copy1);
+
+    // Medir o tempo de execucao do Insertion_Sort
+    int *copy2 = (int*)malloc(size * sizeof(int));
+    if (copy2 == NULL)
+    {
+        fprintf(stderr, "Erro ao alocar memória\n");
+        return 1;
+    }
+    for (int i = 0; i < size; i++) copy2[i] = numbers[i];
+
+    start = clock();
+    Insertion_Sort(copy2, size);
+    end = clock();
+    time_spent = (double)(end - start) / CLOCKS_PER_SEC;
+
+    //printf("Vetor após Insertion Sort:\n");
+    // printArray(copy2, size);
+    printf("Tempo de execucao do Insertion Sort: %f segundos\n", time_spent);
+
+    free(copy2);
     free(numbers);
 
     return 0;

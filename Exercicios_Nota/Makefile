@@ -2,7 +2,7 @@
 CC = gcc
 
 # Opções do compilador
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -g 
 
 # Arquivo de saída
 TARGET = main
