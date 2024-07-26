@@ -114,6 +114,8 @@ int main(int argc, char *argv[])
     int size;
     int *numbers = readNumbersFromFile(argv[1], &size);
 
+    //Coloquei os prints dos vetores como comentários, pois são mts números e polui o terminal por isso deixei apenas a medição do tempo. 
+
     // printf("Vetor antes da ordenação:\n");
     // printArray(numbers, size);
 
